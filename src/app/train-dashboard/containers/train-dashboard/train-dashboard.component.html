@@ -1,0 +1,15 @@
+<div class="container">
+  <div *ngFor="let train of trains">
+    {{train.origin}}
+  </div>
+  
+  <app-confirmed-trains 
+    [trainsList]="trains">
+  </app-confirmed-trains>
+
+  <app-train-detail 
+    *ngFor="let train of trains"
+    (edit)="mergeEdit($event)"
+    [train]="train">
+  </app-train-detail>  
+</div>

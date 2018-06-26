@@ -1,22 +1,6 @@
-interface TrainWagon {
-  wagonClass: string;
-  seats: number;
-  type: string;
-}
+import { Train } from '../models/train';
 
-interface TrainInterface {
-  origin: string;
-  destination: string;
-  id: string;
-  numberOfSeats: number;
-  seatsReserved: number;
-  timeOfDeparture: number;
-  timeOfArrival: number;
-  confirmed: boolean;
-  wagons: TrainWagon[] | null;
-}
-
-export const trainsList: TrainInterface[] = [
+export const trainsList: Train[] = [
   {
     origin: 'Plovdiv',
     destination: 'Sofia',

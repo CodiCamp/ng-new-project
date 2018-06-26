@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="column" [ngClass]="{ red: train.confirmed }">
+    {{ train.id }}
+  </div>
+  <div class="column" [class.red]="train.confirmed">
+    <span *ngIf="!editing">
+      {{ train.origin | uppercase }}
+    </span>
+    <span *ngIf="editing">
+      
+      <input type="text" 
+      #origin    
+      [value]="train.origin"
+      (input)="updateOrigin(origin.value)">
+    </span>
+  </div>
+  <div class="column">
+    <span *ngIf="!editing">  
+      {{ train.destination | uppercase }}
+    </span>
+    <span *ngIf="editing">    
+      <input type="text" 
+        #destination
+        [value]="train.destination"
+        (input)="updateDestination(destination.value)" >
+    </span>
+  </div>
+  <div class="column">
+    {{ train.timeOfDeparture | date: 'HH:mm dMMMy' }}
+  </div>
+  <div class="column">
+    {{ train.wagons?.length || 0 }}
+  </div>
+  <div class="column">
+    <button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
+  </div>
+</div>
