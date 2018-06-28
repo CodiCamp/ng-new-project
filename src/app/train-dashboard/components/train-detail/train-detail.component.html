@@ -1,32 +1,38 @@
 <div class="row">
-  <div class="column" [ngClass]="{ red: train.confirmed }">
+  <div class="column">
     {{ train.id }}
+  </div>
+  <div class="column">
+    {{ train.name }}
   </div>
   <div class="column" [class.red]="train.confirmed">
     <span *ngIf="!editing">
-      {{ train.origin | uppercase }}
+      {{ train.departureDestination | uppercase }}
     </span>
     <span *ngIf="editing">
       
       <input type="text" 
-      #origin    
-      [value]="train.origin"
-      (input)="updateOrigin(origin.value)">
+      #departure    
+      [value]="train.departureDestination"
+      (input)="updateOrigin(departure.value)">
     </span>
   </div>
   <div class="column">
     <span *ngIf="!editing">  
-      {{ train.destination | uppercase }}
+      {{ train.arrivalDestination | uppercase }}
     </span>
     <span *ngIf="editing">    
       <input type="text" 
-        #destination
-        [value]="train.destination"
-        (input)="updateDestination(destination.value)" >
+        #arrival
+        [value]="train.arrivalDestination"
+        (input)="updateDestination(arrival.value)" >
     </span>
   </div>
   <div class="column">
-    {{ train.timeOfDeparture | date: 'HH:mm dMMMy' }}
+    {{ train.departureTime | date: 'HH:mm dMMMy' }}
+  </div>
+  <div class="column">
+    {{ train.arrivalTime | date: 'HH:mm dMMMy' }}
   </div>
   <div class="column">
     {{ train.wagons?.length || 0 }}

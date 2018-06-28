@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Train } from '../../models/train';
-import { trainsList } from '../../data/trains-data';
+
+import { TrainDashboardService } from '../../train-dashboard.service';
 
 @Component({
   selector: 'app-train-dashboard',
   templateUrl: './train-dashboard.component.html',
   styleUrls: ['./train-dashboard.component.css'],
+  providers: [TrainDashboardService],
 })
 export class TrainDashboardComponent implements OnInit {
   trains: Train[];
-  constructor() {}
+  constructor(private trainService: TrainDashboardService) {}
 
   ngOnInit() {
-    this.trains = trainsList;
+    this.trainService.getTrains().subscribe(
+      trains => {
+        this.trains = trains;
+      },
+      error => {
+        console.log('Handle error', error);
+      },
+    );
   }
 
   deleteTrain(train: Train) {
@@ -22,12 +31,13 @@ export class TrainDashboardComponent implements OnInit {
   }
 
   mergeEdit(editedTrain: Train) {
-    this.trains = this.trains.map(train => {
-      if (train.id === editedTrain.id) {
-        train = { ...train, ...editedTrain };
-      }
-
-      return train;
+    this.trainService.editTrain(editedTrain).subscribe(() => {
+      this.trains = this.trains.map(train => {
+        if (train.id === editedTrain.id) {
+          train = { ...train, ...editedTrain };
+        }
+        return train;
+      });
     });
   }
 }

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { TrainDashboardModule } from './train-dashboard/train-dashboard.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { TrainDashboardModule } from './train-dashboard/train-dashboard.module';
     BrowserModule,
     FormsModule,
     CommonModule,
+    HttpClientModule,
 
     // Custom modules
     TrainDashboardModule,

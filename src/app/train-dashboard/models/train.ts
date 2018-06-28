@@ -1,13 +1,14 @@
 import { Wagon } from './wagon';
 
 export interface Train {
-  origin: string;
-  destination: string;
+  departureDestination: string;
+  arrivalDestination: string;
   id: string;
+  name: string;
   numberOfSeats: number;
   seatsReserved: number;
-  timeOfDeparture: number;
-  timeOfArrival: number;
+  departureTime: number;
+  arrivalTime: number;
   confirmed: boolean;
   wagons: Wagon[] | null;
 }

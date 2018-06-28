@@ -6,6 +6,6 @@ import { Train } from '../../train-dashboard/models/train';
 })
 export class ConfirmedTrainsPipe implements PipeTransform {
   transform(trains: Train[], args?: any): number {
-    return trains.filter(train => train.confirmed).length;
+    return trains ? trains.filter(train => train.confirmed).length : 0;
   }
 }

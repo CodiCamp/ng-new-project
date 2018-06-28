@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { Train } from '../../models/train';
 
+import { TrainDashboardService } from '../../train-dashboard.service';
+
 @Component({
   selector: 'app-train-detail',
   templateUrl: './train-detail.component.html',
@@ -18,7 +20,7 @@ export class TrainDetailComponent implements OnChanges {
   @Output() edit: EventEmitter<Train> = new EventEmitter();
   @Output() delete: EventEmitter<Train> = new EventEmitter();
   editing = false;
-  constructor() {}
+  constructor(private service: TrainDashboardService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
@@ -38,10 +40,10 @@ export class TrainDetailComponent implements OnChanges {
   }
 
   updateDestination(newDestination: string): void {
-    this.train.destination = newDestination;
+    this.train.arrivalDestination = newDestination;
   }
 
   updateOrigin(newOrigin: string): void {
-    this.train.origin = newOrigin;
+    this.train.departureDestination = newOrigin;
   }
 }
