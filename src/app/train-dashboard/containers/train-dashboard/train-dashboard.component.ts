@@ -15,6 +15,12 @@ export class TrainDashboardComponent implements OnInit {
     this.trains = trainsList;
   }
 
+  deleteTrain(train: Train) {
+    this.trains = this.trains.filter(item => {
+      return item.id !== train.id;
+    });
+  }
+
   mergeEdit(editedTrain: Train) {
     this.trains = this.trains.map(train => {
       if (train.id === editedTrain.id) {

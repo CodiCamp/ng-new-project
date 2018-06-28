@@ -10,6 +10,7 @@
   <app-train-detail 
     *ngFor="let train of trains"
     (edit)="mergeEdit($event)"
+    (delete)="deleteTrain($event)"
     [train]="train">
   </app-train-detail>  
 </div>

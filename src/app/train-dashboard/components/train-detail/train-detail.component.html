@@ -31,7 +31,8 @@
   <div class="column">
     {{ train.wagons?.length || 0 }}
   </div>
-  <div class="column">
-    <button (click)="toggleEdit()">{{ editing ? 'Done' : 'Edit' }}</button>
+  <div class="column actions">
+    <button (click)="toggleEdit()" class="button-small">{{ editing ? 'Done' : 'Edit' }}</button>
+    <button (click)="deleteTrain()" class=" button-small button-outline">Delete</button>
   </div>
 </div>

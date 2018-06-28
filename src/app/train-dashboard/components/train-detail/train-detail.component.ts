@@ -11,17 +11,22 @@ import { Train } from '../../models/train';
 @Component({
   selector: 'app-train-detail',
   templateUrl: './train-detail.component.html',
-  styleUrls: ['./train-detail.component.css'],
+  styleUrls: ['./train-detail.component.scss'],
 })
 export class TrainDetailComponent implements OnChanges {
   @Input() train: Train;
   @Output() edit: EventEmitter<Train> = new EventEmitter();
+  @Output() delete: EventEmitter<Train> = new EventEmitter();
   editing = false;
   constructor() {}
 
   ngOnChanges(changes: SimpleChanges) {
     console.log(changes);
     this.train = Object.assign({}, changes.train.currentValue);
+  }
+
+  deleteTrain() {
+    this.delete.emit(this.train);
   }
 
   toggleEdit() {
