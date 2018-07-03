@@ -22,6 +22,7 @@ export class ViewTrainComponent implements OnInit {
   ngOnInit() {
     console.log(this.activatedRoute);
     this.train = this.activatedRoute.snapshot.data.train;
+
     //   this.activatedRoute.params
     //     .pipe(
     //       switchMap(data => {
