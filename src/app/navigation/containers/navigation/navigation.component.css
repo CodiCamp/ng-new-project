@@ -1,0 +1,11 @@
+nav {
+  margin: 10px 0;
+  border-bottom: 1px solid gray;
+}
+a {
+  color: gray;
+}
+
+.active {
+  color: #9b4dca;
+}

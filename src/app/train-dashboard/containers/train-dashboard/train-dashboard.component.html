@@ -11,6 +11,7 @@
     *ngFor="let train of trains"
     (edit)="mergeEdit($event)"
     (delete)="deleteTrain($event)"
+    (view)="viewTrain($event)"
     [train]="train">
   </app-train-detail>  
 </div>

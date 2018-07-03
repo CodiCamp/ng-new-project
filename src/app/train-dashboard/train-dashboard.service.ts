@@ -36,4 +36,8 @@ export class TrainDashboardService {
 
     return this.http.put<Train[]>(Put_URL, train);
   }
+
+  getTrain(id: string) {
+    return this.http.get<Train>(`${Get_URL}/${id}`);
+  }
 }

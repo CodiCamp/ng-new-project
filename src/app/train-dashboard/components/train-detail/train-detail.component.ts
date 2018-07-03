@@ -19,6 +19,7 @@ export class TrainDetailComponent implements OnChanges {
   @Input() train: Train;
   @Output() edit: EventEmitter<Train> = new EventEmitter();
   @Output() delete: EventEmitter<Train> = new EventEmitter();
+  @Output() view: EventEmitter<Train> = new EventEmitter();
   editing = false;
   constructor(private service: TrainDashboardService) {}
 
@@ -45,5 +46,9 @@ export class TrainDetailComponent implements OnChanges {
 
   updateOrigin(newOrigin: string): void {
     this.train.departureDestination = newOrigin;
+  }
+
+  viewTrain(): void {
+    this.view.emit(this.train);
   }
 }

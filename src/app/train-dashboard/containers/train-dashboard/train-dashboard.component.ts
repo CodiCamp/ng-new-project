@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Train } from '../../models/train';
 
 import { TrainDashboardService } from '../../train-dashboard.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-train-dashboard',
@@ -11,7 +12,10 @@ import { TrainDashboardService } from '../../train-dashboard.service';
 })
 export class TrainDashboardComponent implements OnInit {
   trains: Train[];
-  constructor(private trainService: TrainDashboardService) {}
+  constructor(
+    private trainService: TrainDashboardService,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.trainService.getTrains().subscribe(
@@ -39,5 +43,9 @@ export class TrainDashboardComponent implements OnInit {
         return train;
       });
     });
+  }
+
+  viewTrain(viewTrain: Train) {
+    this.router.navigate(['trains', viewTrain.id]);
   }
 }
