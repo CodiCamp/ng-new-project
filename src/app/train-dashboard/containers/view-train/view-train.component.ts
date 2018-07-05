@@ -1,17 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { TrainDashboardService } from '../../train-dashboard.service';
 import { Train } from '../../models/train';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { HttpErrorResponse } from '@angular/common/http';
+// import { switchMap } from 'rxjs/operators';
+// import { HttpErrorResponse } from '@angular/common/http';
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-view-train',
   templateUrl: './view-train.component.html',
   styleUrls: ['./view-train.component.css'],
 })
-export class ViewTrainComponent implements OnInit {
+export class ViewTrainComponent implements OnInit, AfterViewInit {
   train: Train;
+
+  @ViewChild('departureDestination') departureDInput: ElementRef;
+  @ViewChild('form') form: ElementRef;
 
   constructor(
     private trainService: TrainDashboardService,
@@ -19,8 +23,11 @@ export class ViewTrainComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
   ) {}
 
+  ngAfterViewInit() {
+    console.log(this.form);
+  }
+
   ngOnInit() {
-    console.log(this.activatedRoute);
     this.train = this.activatedRoute.snapshot.data.train;
 
     //   this.activatedRoute.params
@@ -40,5 +47,9 @@ export class ViewTrainComponent implements OnInit {
     //         }
     //       },
     //     );
+  }
+
+  submitForm() {
+    console.log(this);
   }
 }

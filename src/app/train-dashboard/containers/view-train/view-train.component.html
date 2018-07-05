@@ -1,5 +1,37 @@
-<div>
+<div class="container">
   <h2>
     Selected train from {{train?.departureDestination}} to {{train?.arrivalDestination}}
   </h2>
+
+  <form #form="ngForm" (ngSubmit)="submitForm(form.value, form.valid)" novalidate>
+    <div class="row">
+      <label for="departureDestination" class="column">
+        Departure destination
+      </label>
+      <div class="column">
+        <input type="text" 
+          required
+          maxlength="10"
+          minlength="2"
+          [ngModel]="train.departureDestination" 
+          #departureDestination="ngModel"
+          name="departureDestination">
+          <div *ngIf="departureDestination.errors?.required">
+            Departure destination is invalid
+          </div>
+      </div>
+    </div>
+    <div class="row">
+      {{departureDestination.errors | json}}
+    </div>
+    <div class="row">
+      {{departureDestination.dirty}}
+    </div>
+    <div class="row">
+      {{departureDestination.touched}}
+    </div>
+    <div>
+      <button type="submit" [disabled]="form.invalid">Save changes</button>
+    </div>
+  </form>
 </div>
