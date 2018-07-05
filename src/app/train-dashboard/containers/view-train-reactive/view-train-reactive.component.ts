@@ -7,8 +7,6 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
-// import { switchMap } from 'rxjs/operators';
-// import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-view-train',
@@ -32,7 +30,9 @@ export class ViewTrainReactiveComponent implements OnInit {
     this.train = this.activatedRoute.snapshot.data.train;
   }
 
-  submitForm() {
-    console.log(this);
+  onSubmit() {
+    if (this.form.valid) {
+      console.log(this.form.value);
+    }
   }
 }

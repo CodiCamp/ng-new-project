@@ -3,32 +3,58 @@
     Selected train from {{train?.departureDestination}} to {{train?.arrivalDestination}}
   </h2>
 
-  <form #form="ngForm" (ngSubmit)="submitForm(form.value, form.valid)" novalidate>
+  <form #form="ngForm" (ngSubmit)="submitForm(form.value)" novalidate>
     <div class="row">
       <label for="departureDestination" class="column">
         Departure destination
       </label>
       <div class="column">
         <input type="text" 
-          required
-          maxlength="10"
-          minlength="2"
+          minlength="5"
           [ngModel]="train.departureDestination" 
           #departureDestination="ngModel"
           name="departureDestination">
           <div *ngIf="departureDestination.errors?.required">
-            Departure destination is invalid
+            Field is required
+          </div>
+          <div *ngIf="departureDestination.errors?.minlength">
+            Min length of 5
           </div>
       </div>
+      
     </div>
     <div class="row">
-      {{departureDestination.errors | json}}
+      form.value: {{ form.value | json }}
+    </div>
+
+    <div class="row">
+      form.value.departureDestination: {{ form.value.departureDestination | json }}
+    </div>
+
+    <div class="row">
+      form.valid: {{ form.valid | json }}
+    </div>
+
+    <div class="row">
+      form.touched: {{ form.touched | json }}
+    </div>
+
+    <div class="row">
+      form.dirty: {{ form.dirty | json }}
+    </div>
+
+    <div class="row">
+      form.errors: {{ form.errors | json }}
+    </div>
+
+    <div class="row">
+      departureDestination.errors: {{departureDestination.errors | json}}
     </div>
     <div class="row">
-      {{departureDestination.dirty}}
+      departureDestination.dirty: {{departureDestination.dirty}}
     </div>
     <div class="row">
-      {{departureDestination.touched}}
+      departureDestination.touched: {{departureDestination.touched}}
     </div>
     <div>
       <button type="submit" [disabled]="form.invalid">Save changes</button>

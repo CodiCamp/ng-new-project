@@ -2,8 +2,6 @@ import { Component, OnInit, ElementRef, AfterViewInit } from '@angular/core';
 import { TrainDashboardService } from '../../train-dashboard.service';
 import { Train } from '../../models/train';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { switchMap } from 'rxjs/operators';
-// import { HttpErrorResponse } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 
 @Component({
@@ -24,7 +22,7 @@ export class ViewTrainComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngAfterViewInit() {
-    console.log(this.form);
+    console.log(this.form, this.departureDInput);
   }
 
   ngOnInit() {
@@ -49,7 +47,7 @@ export class ViewTrainComponent implements OnInit, AfterViewInit {
     //     );
   }
 
-  submitForm() {
-    console.log(this);
+  submitForm(form) {
+    console.log(form);
   }
 }

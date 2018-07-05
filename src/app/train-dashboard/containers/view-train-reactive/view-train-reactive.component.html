@@ -10,9 +10,8 @@
       </label>
       <div class="column">
         <input type="text" 
-          #departureDestination=""
           formControlName="departureDestination">
-          <div>
+          <div *ngIf="departureDestination">
             Departure destination is invalid
           </div>
       </div>
@@ -31,27 +30,35 @@
     </div>
 
     <div class="row">
-      {{ form.value | json }}
+      form.value: {{ form.value | json }}
     </div>
 
     <div class="row">
-      {{ form.value.departureDestination | json }}
+      form.value.departureDestination: {{ form.value.departureDestination | json }}
     </div>
 
     <div class="row">
-      {{ form.valid | json }}
+      form.valid: {{ form.valid | json }}
     </div>
 
     <div class="row">
-      {{ form.touched | json }}
+      form.touched: {{ form.touched | json }}
     </div>
 
     <div class="row">
-      Errors: {{ form.errors | json }}
+      form.dirty: {{ form.dirty | json }}
     </div>
 
     <div class="row">
-      Has Errors: {{ departureDestination | json }}
+      form.errors: {{ form.errors | json }}
+    </div>
+
+    <div class="row">
+      arrivalDestination: {{ arrivalDestination.errors | json }}
+    </div>
+
+    <div class="row">
+      arrivalDestination: {{ form.get('arrivalDestination').errors | json }}
     </div>
     
     <div>
